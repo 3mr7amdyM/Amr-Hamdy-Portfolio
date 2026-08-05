@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amr Hamdy Mohamed — IoT &amp; Smart City Solutions Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0A2540;
+    --bg-1:#0E2F52;
+    --grid:#16436B;
+    --grid-strong:#1E5580;
+    --cyan:#4FD8D0;
+    --amber:#F2A93B;
+    --ink-0:#F3F8FB;
+    --ink-1:#A9C2D4;
+    --ink-2:#6E8CA3;
+    --card:#0F3357;
+    --card-border:#1D5178;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--ink-0);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--cyan);color:var(--bg-0);}
+
+  a{color:inherit;text-decoration:none;}
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .grid-field{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:42px 42px;
+    opacity:0.35;
+    pointer-events:none;
+  }
+  .grid-field::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(79,216,208,0.10), transparent 60%);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 48px;
+    background:linear-gradient(180deg, rgba(10,37,64,0.92), rgba(10,37,64,0.0));
+    backdrop-filter:blur(2px);
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.08em;
+    color:var(--ink-0);
+  }
+  .logo .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 8px 2px rgba(79,216,208,0.7);
+    animation:pulse-dot 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-dot{
+    0%,100%{opacity:1; box-shadow:0 0 8px 2px rgba(79,216,208,0.7);}
+    50%{opacity:0.5; box-shadow:0 0 2px 0px rgba(79,216,208,0.3);}
+  }
+  nav{display:flex;gap:36px;}
+  nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:var(--ink-1);
+    text-transform:uppercase;
+    position:relative;
+    padding-bottom:4px;
+    transition:color 0.2s;
+  }
+  nav a:hover{color:var(--cyan);}
+  nav a::before{
+    content:attr(data-idx);
+    color:var(--ink-2);
+    margin-right:6px;
+  }
+  .nav-cta{
+    border:1px solid var(--card-border);
+    padding:8px 16px;
+    border-radius:var(--radius);
+    color:var(--cyan) !important;
+  }
+  .nav-cta:hover{background:rgba(79,216,208,0.08); border-color:var(--cyan);}
+
+  @media (max-width:860px){
+    nav{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 48px 80px;
+    z-index:1;
+  }
+  .hero-inner{
+    max-width:1180px;
+    margin:0 auto;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:64px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    color:var(--cyan);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:28px;height:1px;
+    background:var(--cyan);
+  }
+  h1{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700;
+    font-size:clamp(34px, 4.4vw, 58px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    color:var(--ink-0);
+    margin-bottom:20px;
+  }
+  h1 .accent{color:var(--cyan);}
+  .hero-role{
+    font-size:19px;
+    color:var(--ink-1);
+    max-width:520px;
+    margin-bottom:34px;
+  }
+  .hero-role strong{color:var(--ink-0); font-weight:600;}
+
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:46px;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:all 0.2s ease;
+  }
+  .btn-primary{
+    background:var(--cyan);
+    color:#05202F;
+    font-weight:600;
+    border:1px solid var(--cyan);
+  }
+  .btn-primary:hover{background:#6EE5DE; transform:translateY(-1px);}
+  .btn-outline{
+    border:1px solid var(--card-border);
+    color:var(--ink-0);
+  }
+  .btn-outline:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  .hero-stats{
+    display:flex;
+    gap:40px;
+    border-top:1px solid var(--grid-strong);
+    padding-top:24px;
+  }
+  .stat-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:26px;
+    font-weight:700;
+    color:var(--ink-0);
+  }
+  .stat-num .u{color:var(--cyan); font-size:16px;}
+  .stat-label{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-2);
+    margin-top:4px;
+  }
+
+  /* Photo module */
+  .photo-module{
+    position:relative;
+    justify-self:center;
+    width:100%;
+    max-width:340px;
+  }
+  .photo-frame{
+    position:relative;
+    border:1px solid var(--grid-strong);
+    padding:18px;
+    background:rgba(15,51,87,0.4);
+  }
+  .photo-frame::before, .photo-frame::after,
+  .corner-tl, .corner-br{
+    content:"";
+    position:absolute;
+    width:18px;height:18px;
+    border-color:var(--cyan);
+    border-style:solid;
+  }
+  .photo-frame::before{ top:-1px; left:-1px; border-width:2px 0 0 2px;}
+  .photo-frame::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0;}
+  .photo-frame .corner-tr{position:absolute; top:-1px; right:-1px; width:18px; height:18px; border-top:2px solid var(--cyan); border-right:2px solid var(--cyan);}
+  .photo-frame .corner-bl{position:absolute; bottom:-1px; left:-1px; width:18px; height:18px; border-bottom:2px solid var(--cyan); border-left:2px solid var(--cyan);}
+
+  .photo-frame img{
+    width:100%;
+    display:block;
+    filter:grayscale(15%) contrast(1.04);
+    background:#03151f;
+  }
+  .scan-tag{
+    position:absolute;
+    top:34px; left:34px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.08em;
+    color:var(--cyan);
+    background:rgba(5,32,47,0.75);
+    padding:4px 8px;
+    border:1px solid rgba(79,216,208,0.4);
+  }
+  .status-tag{
+    position:absolute;
+    bottom:34px; right:34px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.08em;
+    color:var(--ink-0);
+    background:rgba(5,32,47,0.75);
+    padding:4px 8px;
+    border:1px solid rgba(79,216,208,0.4);
+    display:flex; align-items:center; gap:6px;
+  }
+  .status-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--amber); box-shadow:0 0 6px 1px rgba(242,169,59,0.7);}
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr; gap:44px;}
+    .photo-module{order:-1; max-width:220px;}
+    .hero-stats{gap:26px; flex-wrap:wrap;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    position:relative;
+    z-index:1;
+    max-width:1180px;
+    margin:0 auto;
+    padding:110px 48px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:56px;
+    border-bottom:1px solid var(--grid-strong);
+    padding-bottom:22px;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .section-idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--cyan);
+    letter-spacing:0.1em;
+  }
+  .section-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:clamp(24px,3vw,34px);
+    font-weight:700;
+    color:var(--ink-0);
+  }
+  .section-sub{
+    color:var(--ink-2);
+    font-size:14px;
+    max-width:360px;
+    text-align:right;
+  }
+  @media (max-width:700px){
+    .section-sub{text-align:left;}
+    section{padding:80px 24px;}
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:64px;
+  }
+  .about-text p{
+    color:var(--ink-1);
+    font-size:16.5px;
+    margin-bottom:18px;
+    max-width:620px;
+  }
+  .about-text strong{color:var(--ink-0);}
+  .locations{
+    border:1px solid var(--card-border);
+    background:var(--card);
+    padding:26px;
+  }
+  .locations h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:18px;
+  }
+  .loc-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px dashed var(--grid-strong);
+    font-size:13.5px;
+  }
+  .loc-row:last-child{border-bottom:none;}
+  .loc-row span:first-child{color:var(--ink-0);}
+  .loc-row span:last-child{color:var(--ink-2); font-family:'IBM Plex Mono', monospace; font-size:12px;}
+
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* ---------- NETWORK MAP (signature element) ---------- */
+  .network-wrap{
+    margin-top:70px;
+    border:1px solid var(--grid-strong);
+    background:var(--card);
+    padding:28px 28px 10px;
+    position:relative;
+  }
+  .network-label{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink-2);
+    text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .network-label .live{color:var(--amber); display:flex; align-items:center; gap:6px;}
+  .network-label .live .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse-dot 1.6s ease-in-out infinite;}
+  svg#netmap{width:100%; height:auto; display:block;}
+  .netmap-node-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; fill:var(--ink-1);}
+  .netmap-node-sub{font-family:'IBM Plex Mono', monospace; font-size:9px; fill:var(--ink-2);}
+
+  /* ---------- COMPETENCIES ---------- */
+  .modules-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--grid-strong);
+    border:1px solid var(--grid-strong);
+  }
+  .module{
+    background:var(--bg-1);
+    padding:30px 26px;
+    transition:background 0.2s;
+  }
+  .module:hover{background:var(--card);}
+  .module-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--amber);
+    margin-bottom:14px;
+    letter-spacing:0.08em;
+  }
+  .module h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    color:var(--ink-0);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .module p{
+    font-size:13.5px;
+    color:var(--ink-2);
+    line-height:1.55;
+  }
+  @media (max-width:860px){ .modules-grid{grid-template-columns:1fr;} }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{
+    position:relative;
+    padding-left:52px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:15px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--grid-strong);
+  }
+  .t-item{
+    position:relative;
+    padding-bottom:56px;
+  }
+  .t-item:last-child{padding-bottom:0;}
+  .t-num{
+    position:absolute;
+    left:-52px; top:0;
+    width:31px; height:31px;
+    border:1px solid var(--cyan);
+    background:var(--bg-0);
+    color:var(--cyan);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    display:flex;align-items:center;justify-content:center;
+    z-index:2;
+  }
+  .t-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .t-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:18px;
+    font-weight:600;
+    color:var(--ink-0);
+  }
+  .t-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--cyan);
+  }
+  .t-company{
+    color:var(--ink-1);
+    font-size:13.5px;
+    margin-bottom:14px;
+    font-weight:500;
+  }
+  .t-list{list-style:none;}
+  .t-list li{
+    position:relative;
+    padding-left:18px;
+    color:var(--ink-2);
+    font-size:14.5px;
+    margin-bottom:8px;
+  }
+  .t-list li::before{
+    content:"›";
+    position:absolute; left:0; top:0;
+    color:var(--cyan);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:22px;
+  }
+  .project-card{
+    border:1px solid var(--card-border);
+    background:var(--card);
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .project-card::before{
+    content:attr(data-tag);
+    position:absolute;
+    top:0; right:0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.08em;
+    color:var(--bg-0);
+    background:var(--cyan);
+    padding:5px 10px;
+  }
+  .project-card h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:16.5px;
+    color:var(--ink-0);
+    margin:6px 0 12px;
+    max-width:80%;
+  }
+  .project-card p{
+    color:var(--ink-2);
+    font-size:13.8px;
+    line-height:1.6;
+  }
+  .project-card .loc{
+    margin-top:16px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-2);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .project-card .loc::before{content:"◈"; color:var(--amber);}
+  @media (max-width:780px){ .projects-grid{grid-template-columns:1fr;} }
+
+  /* ---------- EDUCATION / CERTS ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+  }
+  .cred-list{list-style:none;}
+  .cred-list li{
+    border-bottom:1px solid var(--grid-strong);
+    padding:16px 0;
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .cred-list li:first-child{padding-top:0;}
+  .cred-name{color:var(--ink-0); font-size:14.5px; font-weight:500;}
+  .cred-sub{color:var(--ink-2); font-size:12.5px; margin-top:4px;}
+  .cred-mark{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--cyan); white-space:nowrap;}
+  @media (max-width:780px){ .split{grid-template-columns:1fr; gap:40px;} }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-section{
+    text-align:center;
+    padding-bottom:60px;
+  }
+  .contact-section .section-head{justify-content:center; text-align:center; border-bottom:none;}
+  .contact-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:clamp(28px,4vw,44px);
+    font-weight:700;
+    color:var(--ink-0);
+    max-width:640px;
+    margin:0 auto 22px;
+    line-height:1.2;
+  }
+  .contact-title .accent{color:var(--cyan);}
+  .contact-sub{color:var(--ink-2); max-width:480px; margin:0 auto 40px; font-size:15px;}
+  .contact-links{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  footer{
+    border-top:1px solid var(--grid-strong);
+    padding:28px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-2);
+    letter-spacing:0.04em;
+    position:relative;
+    z-index:1;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* reveal animation — only pre-hidden once JS confirms it can reveal again */
+  .reveal{
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .js-reveal-ready .reveal{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  .js-reveal-ready .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .logo .dot, .status-tag .dot, .network-label .live .dot{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<header>
+  <div class="logo"><span class="dot"></span> AMR&nbsp;HAMDY<span style="color:var(--ink-2)">.SYS</span></div>
+  <nav>
+    <a href="#about" data-idx="01">Profile</a>
+    <a href="#stack" data-idx="02">Stack</a>
+    <a href="#experience" data-idx="03">Experience</a>
+    <a href="#projects" data-idx="04">Projects</a>
+    <a href="#credentials" data-idx="05">Credentials</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow mono">Node online · Riyadh, Saudi Arabia</div>
+      <h1>Engineering the<br>infrastructure of<br><span class="accent">smart cities.</span></h1>
+      <p class="hero-role">I'm <strong>Amr Hamdy Mohamed</strong>, an IoT &amp; Smart City Solutions Engineer. I design and integrate the device-to-cloud systems behind mobility, lighting, ports, and municipal infrastructure across Saudi Arabia and Egypt.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View deployed projects →</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num"><span class="u">11+</span></div>
+          <div class="stat-label">Years in IoT / Smart Cities</div>
+        </div>
+        <div>
+          <div class="stat-num">15<span class="u">+</span></div>
+          <div class="stat-label">Solutions Deployed</div>
+        </div>
+        <div>
+          <div class="stat-num">5<span class="u">0,000+</span></div>
+          <div class="stat-label">Endpoints Under FCS Fleet</div>
+        </div>
+      </div>
+    </div>
+    <div class="photo-module">
+      <div class="photo-frame">
+        <span class="corner-tr"></span><span class="corner-bl"></span>
+        <span class="scan-tag">ID://ENG‑IOT‑01</span>
+        <img src="amr-photo.jpeg" alt="Portrait of Amr Hamdy Mohamed">
+        <span class="status-tag"><span class="dot"></span>ACTIVE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-idx">01 / PROFILE</div>
+      <div class="section-title">System Overview</div>
+    </div>
+    <div class="section-sub">A summary of scope, geography, and current focus.</div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I lead <strong>end-to-end IoT device integration</strong> — from onboarding and configuration through full lifecycle management — for platforms spanning smart mobility, smart lighting, waste management, and critical infrastructure monitoring. My work sits at the intersection of hardware, connectivity, and cloud: designing solutions that hold up in the field, not just in the spec sheet.</p>
+      <p>Over nine years I've moved from embedded hardware design (PCB, FPGA, RTOS) into large-scale platform integration — building the connective tissue between physical sensors and the dashboards city operators actually use. Recent work spans <strong>Saudi Arabia's Vision 2030 smart city initiatives</strong>, including port logistics with ZATCA and infrastructure monitoring with STC.</p>
+      <p>Currently based in <strong>Riyadh</strong>, working as Engineering Lead – IoT Integrated Devices at IoT Squared.</p>
+    </div>
+    <div class="locations reveal">
+      <h3>Deployment Geography</h3>
+      <div class="loc-row"><span>Riyadh, Saudi Arabia</span><span>HQ · Current</span></div>
+      <div class="loc-row"><span>Jeddah Islamic Port</span><span>ZATCA</span></div>
+      <div class="loc-row"><span>Cairo — New Capital</span><span>ACUD</span></div>
+      <div class="loc-row"><span>Sheikh Zayed City</span><span>Smart Lighting</span></div>
+      <div class="loc-row"><span>Borg El Arab</span><span>Smart Waste</span></div>
+      <div class="loc-row"><span>Nationwide KSA</span><span>Fleet Control (4,000+)</span></div>
+    </div>
+  </div>
+
+  <div class="network-wrap reveal">
+    <div class="network-label">
+      <span>Fig. 01 — Active Project Mesh</span>
+      <span class="live"><span class="dot"></span>Live Topology</span>
+    </div>
+    <svg id="netmap" viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+</section>
+
+<!-- ================= STACK / COMPETENCIES ================= -->
+<section id="stack">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-idx">02 / STACK</div>
+      <div class="section-title">Core Modules</div>
+    </div>
+    <div class="section-sub">The capabilities every deployment is built from.</div>
+  </div>
+
+  <div class="modules-grid reveal">
+    <div class="module">
+      <div class="module-id">MOD.01</div>
+      <h4>Solution Design &amp; Integration</h4>
+      <p>End-to-end IoT solution architecture, system integration, and API integration across multi-vendor platforms.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.02</div>
+      <h4>Device &amp; Platform Management</h4>
+      <p>Onboarding, configuration, and lifecycle management across Thingsboard, Azure IoT, MasterofThings, and Honeywell City Suite.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.03</div>
+      <h4>Connectivity</h4>
+      <p>NB‑IoT, LTE‑M, LoRaWAN, satellite communication, 3G/4G, GSM/GPRS, BLE, Wi‑Fi, CAN, SPI, I2C, UART.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.04</div>
+      <h4>Protocols &amp; Standards</h4>
+      <p>HTTP, MQTT, and MODBUS interoperability across heterogeneous device fleets.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.05</div>
+      <h4>Smart City Domains</h4>
+      <p>Smart mobility, lighting, parking, waste management, asset management, and intelligent operations.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.06</div>
+      <h4>Digital Twin</h4>
+      <p>Virtual asset modeling, real-time data integration, simulation, and predictive analytics.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.07</div>
+      <h4>Embedded &amp; Hardware</h4>
+      <p>Embedded C, RTOS, HW/SW co-design, PCB design (Eagle, Altium, Proteus), high-speed circuit design.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.08</div>
+      <h4>Software &amp; Tooling</h4>
+      <p>C, C++, Python, Node-RED, MATLAB/Simulink, and DevOps fundamentals.</p>
+    </div>
+    <div class="module">
+      <div class="module-id">MOD.09</div>
+      <h4>Field Instrumentation</h4>
+      <p>Signal generators, oscilloscopes, multimeters — hands-on validation from bench to deployment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-idx">03 / LOG</div>
+      <div class="section-title">Experience Timeline</div>
+    </div>
+    <div class="section-sub">Nine years, four organizations, one throughline.</div>
+  </div>
+
+  <div class="timeline reveal">
+    <div class="t-item">
+      <div class="t-num">01</div>
+      <div class="t-head">
+        <div class="t-title">Engineering Lead — IoT Integrated Devices</div>
+        <div class="t-date">MAR 2024 — PRESENT</div>
+      </div>
+      <div class="t-company">IoT Squared · Riyadh, Saudi Arabia</div>
+      <ul class="t-list">
+        <li>Lead end-to-end IoT device integration with cloud platforms — onboarding, configuration, and full lifecycle management across multiple platforms.</li>
+        <li>Design, deploy, and integrate IoT-enabled solutions supporting city-scale digital transformation across Smart Cities, Smart Mobility, and Smart Solutions applications.</li>
+        <li>Partner with cross-functional teams to align solution architecture with platform capabilities and stakeholder requirements.</li>
+      </ul>
+    </div>
+    <div class="t-item">
+      <div class="t-num">02</div>
+      <div class="t-head">
+        <div class="t-title">Smart Cities Expert — IoT Specialist</div>
+        <div class="t-date">MAY 2022 — FEB 2024</div>
+      </div>
+      <div class="t-company">Honeywell · Cairo, Egypt</div>
+      <ul class="t-list">
+        <li>Led integration of IoT endpoints with platforms to enable seamless device-to-platform operations.</li>
+        <li>Managed CCP, IoT Ops, Asset Management, Smart Lighting, and Smart Parking applications.</li>
+        <li>Awarded Certificate of Engineering Excellence — Employee of the Quarter, Q1 2023 (Egypt &amp; North Africa).</li>
+      </ul>
+    </div>
+    <div class="t-item">
+      <div class="t-num">03</div>
+      <div class="t-head">
+        <div class="t-title">Senior IoT Solutions Engineer / IoT Solutions Engineer</div>
+        <div class="t-date">MAY 2019 — APR 2022</div>
+      </div>
+      <div class="t-company">SSTM · Cairo, Egypt</div>
+      <ul class="t-list">
+        <li>Delivered Smart City and IoT solutions across device integration, platform configuration, and field deployment.</li>
+      </ul>
+    </div>
+    <div class="t-item">
+      <div class="t-num">04</div>
+      <div class="t-head">
+        <div class="t-title">IoT Solutions Engineer (Part-Time)</div>
+        <div class="t-date">JUL 2016 — APR 2018</div>
+      </div>
+      <div class="t-company">IOTERA · Cairo, Egypt</div>
+      <ul class="t-list">
+        <li>Developed and supported Smart Home IoT applications.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-idx">04 / DEPLOYMENTS</div>
+      <div class="section-title">Selected Projects</div>
+    </div>
+    <div class="section-sub">Field-deployed systems across mobility, ports, and municipal infrastructure.</div>
+  </div>
+
+  <div class="projects-grid reveal">
+    <div class="project-card" data-tag="Smart Port">
+      <h4>Container Tracking &amp; Management</h4>
+      <p>Designed and implemented IoT-based container tracking to enhance real-time visibility, security, and logistics efficiency at Jeddah Islamic Port — aligned with Saudi Vision 2030.</p>
+      <div class="loc">ZATCA · Jeddah Islamic Port</div>
+    </div>
+    <div class="project-card" data-tag="Infrastructure">
+      <h4>Intelligent Operations</h4>
+      <p>Deployed IoT sensors across manholes, handholds, and telecom cabinets for intrusion detection, predictive maintenance, and long-life battery-powered remote control.</p>
+      <div class="loc">STC · Nationwide KSA</div>
+    </div>
+    <div class="project-card" data-tag="Smart Mobility">
+      <h4>Fleet Control Services (FCS)</h4>
+      <p>Delivered fleet control and smart mobility services to 4,000+ customers via telematics, IoT trackers, and integrated data platforms.</p>
+      <div class="loc">Nationwide, Saudi Arabia</div>
+    </div>
+    <div class="project-card" data-tag="Municipal">
+      <h4>Smart Waste Management</h4>
+      <p>Delivered a real-time bin monitoring platform and mobile app for collection scheduling and operational reporting, cutting cost and improving service delivery.</p>
+      <div class="loc">Riyadh Region Municipality</div>
+    </div>
+    <div class="project-card" data-tag="Smart Capital">
+      <h4>ACUD Smart City Program</h4>
+      <p>Built the foundation of Egypt's new administrative capital smart-city program: service digitization (COC) and remote area security monitoring (CCC).</p>
+      <div class="loc">New Capital, Cairo</div>
+    </div>
+    <div class="project-card" data-tag="Connectivity">
+      <h4>NB-IoT Platform &amp; Devices</h4>
+      <p>Designed a platform and NB-IoT/3G/4G devices for remote network-strength measurement and configuration for mobile communication sites.</p>
+      <div class="loc">Vodafone International</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREDENTIALS ================= -->
+<section id="credentials">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-idx">05 / CREDENTIALS</div>
+      <div class="section-title">Education &amp; Certifications</div>
+    </div>
+    <div class="section-sub">Formal training underneath the field experience.</div>
+  </div>
+
+  <div class="split reveal">
+    <div>
+      <h3 class="mono" style="font-size:13px;letter-spacing:0.08em;color:var(--cyan);margin-bottom:18px;text-transform:uppercase;">Education</h3>
+      <ul class="cred-list">
+        <li>
+          <div>
+            <div class="cred-name">BSc, Electronics &amp; Communications Engineering</div>
+            <div class="cred-sub">Cairo University — Graduation Project Grade: A+</div>
+          </div>
+          <div class="cred-mark">2015</div>
+        </li>
+        <li>
+          <div>
+            <div class="cred-name">Visible Light Communication System over FPGA</div>
+            <div class="cred-sub">Funded by ITIDA &amp; NTRA · 2nd Prize, Inno-vent 2015 (ICECS / IEEE / AUC / Zewail City)</div>
+          </div>
+          <div class="cred-mark">AWARD</div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="mono" style="font-size:13px;letter-spacing:0.08em;color:var(--cyan);margin-bottom:18px;text-transform:uppercase;">Certifications</h3>
+      <ul class="cred-list">
+        <li>
+          <div>
+            <div class="cred-name">Certificate of Smart Cities</div>
+            <div class="cred-sub">Management of Smart Urban Infrastructures — EPFL</div>
+          </div>
+          <div class="cred-mark">EPFL</div>
+        </li>
+        <li>
+          <div>
+            <div class="cred-name">Embedded Systems Diploma</div>
+            <div class="cred-sub">Embedded C, RTOS, HW/SW Co-Design, Verification &amp; Testing</div>
+          </div>
+          <div class="cred-mark">DIPLOMA</div>
+        </li>
+        <li>
+          <div>
+            <div class="cred-name">Software Testing Concepts &amp; Techniques</div>
+            <div class="cred-sub">Online ITI Scholarship</div>
+          </div>
+          <div class="cred-mark">ITI</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact-section">
+  <div class="section-head reveal">
+    <div><div class="section-idx">06 / CONTACT</div></div>
+  </div>
+  <div class="reveal">
+    <div class="contact-title">Building the next smart city?<br><span class="accent">Let's connect the dots.</span></div>
+    <p class="contact-sub">Open to IoT and smart city engineering opportunities — solution design, platform integration, and device management roles.</p>
+    <div class="contact-links">
+      <a href="mailto:amr7amdy311@gmail.com" class="btn btn-primary">amr7amdy311@gmail.com</a>
+      <a href="tel:+966509764044" class="btn btn-outline">+966 50 976 4044</a>
+      <a href="https://www.linkedin.com/in/amr-hamdy-12b1a6b7/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Amr Hamdy Mohamed — Riyadh, Saudi Arabia</span>
+  <span>Arabic · English</span>
+</footer>
+
+<script>
+  // Reveal on scroll — progressive enhancement only; content stays visible
+  // by default so it never depends on JS/IO support to be readable.
+  if('IntersectionObserver' in window){
+    document.documentElement.classList.add('js-reveal-ready');
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el=>io.observe(el));
+  }
+
+  // Network map — signature element: project mesh with pulsing signal lines
+  (function(){
+    const svg = document.getElementById('netmap');
+    const NS = "http://www.w3.org/2000/svg";
+    const nodes = [
+      { x: 130, y: 150, name: "Riyadh", sub: "HQ / Fleet Control", hub:true },
+      { x: 330, y: 60,  name: "Jeddah Port", sub: "ZATCA" },
+      { x: 520, y: 190, name: "STC Sites", sub: "Nationwide" },
+      { x: 700, y: 70,  name: "Cairo · ACUD", sub: "New Capital" },
+      { x: 860, y: 175, name: "Sheikh Zayed", sub: "Smart Lighting" },
+      { x: 980, y: 90,  name: "Borg El Arab", sub: "Smart Waste" }
+    ];
+    const hub = nodes[0];
+    const links = nodes.slice(1).map(n => [hub, n]);
+    links.push([nodes[2], nodes[3]]);
+    links.push([nodes[1], nodes[2]]);
+
+    let defs = document.createElementNS(NS, "defs");
+    svg.appendChild(defs);
+
+    links.forEach((pair, i) => {
+      const [a,b] = pair;
+      const line = document.createElementNS(NS, "line");
+      line.setAttribute("x1", a.x); line.setAttribute("y1", a.y);
+      line.setAttribute("x2", b.x); line.setAttribute("y2", b.y);
+      line.setAttribute("stroke", "#1E5580");
+      line.setAttribute("stroke-width", "1");
+      svg.appendChild(line);
+
+      const pulse = document.createElementNS(NS, "circle");
+      pulse.setAttribute("r", "3");
+      pulse.setAttribute("fill", i % 2 === 0 ? "#4FD8D0" : "#F2A93B");
+      const animate = document.createElementNS(NS, "animateMotion");
+      animate.setAttribute("dur", (4 + (i % 3)) + "s");
+      animate.setAttribute("repeatCount", "indefinite");
+      animate.setAttribute("path", `M${a.x},${a.y} L${b.x},${b.y}`);
+      pulse.appendChild(animate);
+      const opacityAnim = document.createElementNS(NS, "animate");
+      opacityAnim.setAttribute("attributeName","opacity");
+      opacityAnim.setAttribute("values","0;1;1;0");
+      opacityAnim.setAttribute("dur", (4 + (i % 3)) + "s");
+      opacityAnim.setAttribute("repeatCount","indefinite");
+      pulse.appendChild(opacityAnim);
+      svg.appendChild(pulse);
+    });
+
+    nodes.forEach(n => {
+      const g = document.createElementNS(NS, "g");
+
+      if(n.hub){
+        const ring = document.createElementNS(NS, "circle");
+        ring.setAttribute("cx", n.x); ring.setAttribute("cy", n.y);
+        ring.setAttribute("r", "14");
+        ring.setAttribute("fill", "none");
+        ring.setAttribute("stroke", "#4FD8D0");
+        ring.setAttribute("stroke-width", "1");
+        ring.setAttribute("opacity", "0.5");
+        const ringAnim = document.createElementNS(NS, "animate");
+        ringAnim.setAttribute("attributeName","r");
+        ringAnim.setAttribute("values","8;18;8");
+        ringAnim.setAttribute("dur","3s");
+        ringAnim.setAttribute("repeatCount","indefinite");
+        ring.appendChild(ringAnim);
+        const ringOp = document.createElementNS(NS, "animate");
+        ringOp.setAttribute("attributeName","opacity");
+        ringOp.setAttribute("values","0.6;0;0.6");
+        ringOp.setAttribute("dur","3s");
+        ringOp.setAttribute("repeatCount","indefinite");
+        ring.appendChild(ringOp);
+        g.appendChild(ring);
+      }
+
+      const dot = document.createElementNS(NS, "circle");
+      dot.setAttribute("cx", n.x); dot.setAttribute("cy", n.y);
+      dot.setAttribute("r", n.hub ? 6 : 4.5);
+      dot.setAttribute("fill", n.hub ? "#4FD8D0" : "#0A2540");
+      dot.setAttribute("stroke", "#4FD8D0");
+      dot.setAttribute("stroke-width", "1.5");
+      g.appendChild(dot);
+
+      const label = document.createElementNS(NS, "text");
+      label.setAttribute("x", n.x);
+      label.setAttribute("y", n.y - 14);
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("class", "netmap-node-label");
+      label.textContent = n.name;
+      g.appendChild(label);
+
+      const sub = document.createElementNS(NS, "text");
+      sub.setAttribute("x", n.x);
+      sub.setAttribute("y", n.y + 22);
+      sub.setAttribute("text-anchor", "middle");
+      sub.setAttribute("class", "netmap-node-sub");
+      sub.textContent = n.sub;
+      g.appendChild(sub);
+
+      svg.appendChild(g);
+    });
+  })();
+</script>
+
+</body>
+</html>
