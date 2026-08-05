@@ -114,7 +114,8 @@
   .nav-cta:hover{background:rgba(79,216,208,0.08); border-color:var(--cyan);}
 
   @media (max-width:860px){
-    nav{display:none;}
+    nav a:not(.nav-cta){display:none;}
+    nav{gap:10px;}
   }
 
   /* ---------- HERO ---------- */
@@ -626,6 +627,7 @@
     <a href="#experience" data-idx="03">Experience</a>
     <a href="#projects" data-idx="04">Projects</a>
     <a href="#credentials" data-idx="05">Credentials</a>
+    <a href="Amr_Hamdy_Mohamed_Resume.pdf" download class="nav-cta" style="color:var(--amber) !important; border-color:var(--amber);">↓ CV</a>
     <a href="#contact" class="nav-cta">Contact</a>
   </nav>
 </header>
@@ -639,11 +641,11 @@
       <p class="hero-role">I'm <strong>Amr Hamdy Mohamed</strong>, an IoT &amp; Smart City Solutions Engineer. I design and integrate the device-to-cloud systems behind mobility, lighting, ports, and municipal infrastructure across Saudi Arabia and Egypt.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">View deployed projects →</a>
-        <a href="#contact" class="btn btn-outline">Get in touch</a>
+        <a href="Amr_Hamdy_Mohamed_Resume.docx" download class="btn btn-outline">↓ Download CV</a>
       </div>
       <div class="hero-stats">
         <div>
-          <div class="stat-num"><span class="u">11+</span></div>
+          <div class="stat-num"><span class="u">9+</span></div>
           <div class="stat-label">Years in IoT / Smart Cities</div>
         </div>
         <div>
@@ -651,7 +653,7 @@
           <div class="stat-label">Solutions Deployed</div>
         </div>
         <div>
-          <div class="stat-num">5<span class="u">0,000+</span></div>
+          <div class="stat-num">4<span class="u">,000+</span></div>
           <div class="stat-label">Endpoints Under FCS Fleet</div>
         </div>
       </div>
@@ -939,6 +941,7 @@
       <a href="mailto:amr7amdy311@gmail.com" class="btn btn-primary">amr7amdy311@gmail.com</a>
       <a href="tel:+966509764044" class="btn btn-outline">+966 50 976 4044</a>
       <a href="https://www.linkedin.com/in/amr-hamdy-12b1a6b7/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="Amr_Hamdy_Mohamed_Resume.docx" download class="btn btn-outline">↓ Download CV</a>
     </div>
   </div>
 </section>
@@ -976,6 +979,7 @@
     ];
     const hub = nodes[0];
     const links = nodes.slice(1).map(n => [hub, n]);
+    // also connect a couple of peripheral nodes for mesh feel
     links.push([nodes[2], nodes[3]]);
     links.push([nodes[1], nodes[2]]);
 
@@ -991,6 +995,7 @@
       line.setAttribute("stroke-width", "1");
       svg.appendChild(line);
 
+      // pulsing signal dot traveling along the line
       const pulse = document.createElementNS(NS, "circle");
       pulse.setAttribute("r", "3");
       pulse.setAttribute("fill", i % 2 === 0 ? "#4FD8D0" : "#F2A93B");
